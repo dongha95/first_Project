@@ -27,7 +27,7 @@ document
         document.getElementById("from-button")
             .textContent = this.textContent;// 버튼을 가져 온다., 값을 바꾼다.
         fromCurrency = this.textContent; // 다른 버튼 선택 시 변수값 저장
-        console.log(fromCurrency);
+        convert();
     }))
 
 document
@@ -36,5 +36,13 @@ document
         document.getElementById("to-button")
             .textContent = this.textContent;// 버튼을 가져 온다., 값을 바꾼다.
         toCurrency = this.textContent; // 다른 버튼 선택 시 변수값 저장
-        console.log(toCurrency);
-    }))
+        convert();
+    }
+
+function convert() {
+    //1, 얼마를 환전, 가지고있는돈이 뭔지, 바꾸고자 하는 돈
+    var amount= document.getElementById("from-input").value;
+    var convertedAmount = amount * currencyRatio[fromCurrency][toCurrency];
+
+    document.getElementById("to-input").value = convertedAmount;
+}
